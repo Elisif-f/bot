@@ -1,12 +1,13 @@
 import discord
+from keep_alive import keep_alive
+import os
 
-# НАСТРОЙКА INTENTS — ЭТА ЧАСТЬ У ВАС ПРАВИЛЬНАЯ
 intents = discord.Intents.default()
-intents.message_content = True  # Читаем содержимое сообщений
+intents.message_content = True
 
 client = discord.Client(intents=intents)
 
-reply_text = """<:love4you:1487554540545773608>
+reply_text = """:love4you:
 [https://discord.com/channels/1484523161935544471/1487097535217799249/1487105935271923874]"""
 
 keywords = ["release", "demo", "playtest", "price", "when"]
@@ -25,9 +26,9 @@ async def on_message(message):
     content = message.content.lower()
     
     if any(word in content for word in keywords):
-        await message.channel.send(reply_text)
-        print(f"📨 Ответ отправлен!")
+        await message.reply(reply_text)
 
-TOKEN = "MTQ5MzI2ODUzODQzNjIyNzExMg.GgG8or.fyReoGWVnUmyTmE7ulwy8q_CYNyn9NQQvi_e_s"
+keep_alive()
 
-client.run("MTQ5MzI2ODUzODQzNjIyNzExMg.GgG8or.fyReoGWVnUmyTmE7ulwy8q_CYNyn9NQQvi_e_s")
+TOKEN = os.getenv("DISCORD_TOKEN")
+client.run(TOKEN)
