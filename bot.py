@@ -7,7 +7,7 @@ intents.message_content = True
 
 client = discord.Client(intents=intents)
 
-reply_text = """:love4you:
+reply_text = """<:love4you:1487554540545773608>
 [https://discord.com/channels/1484523161935544471/1487097535217799249/1487105935271923874]"""
 
 keywords = ["release", "demo", "playtest", "price", "when"]
